@@ -1,0 +1,54 @@
+  {% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 新闻页{% endblock %}
+{% block custom_css %}
+<link href="{% static 'css/news-content.css' %}" rel="stylesheet" type="text/css"  media="all" />
+{% endblock %}
+
+{% block custom_bread %}
+            <ul>
+								<li ><a href="{% url 'index' %}">首 页</a></li>
+								<li><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li class="active"><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+{% endblock %}
+
+{% block content %}
+
+    <!---start-content---->
+   <div class="content">
+    <div class="wrap">
+        <div class="project-top-patination">
+            <ul>
+                <li><a href="{% url 'index' %}">SISO科协</a></li>
+                <li><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+                <li><p>新闻内容</p></li>
+            </ul>
+            <div class="news">
+                 <a class="title0">{{ new_detail.title }}</a>
+                 <a class="totor">
+                    编辑人:{{ new_detail.students }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    审核人:{{ new_detail.boss }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    发布时间：{{ new_detail.create_time }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    点击量：{{ new_detail.click_nums }}
+                </a>
+
+
+                    {% autoescape off %}
+                        {{ new_detail.content }}
+                    {% endautoescape %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ 	<!---End-content---->
+{% endblock %}
+
+
+
+

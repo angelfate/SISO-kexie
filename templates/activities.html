@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+<head>
+<title>活动首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="siso,SISO,siso科协,SISO科协,苏州工业园区,苏州工业园区服务外包职业学院,科学技术协会">
+<meta name="description" content="苏州工业园区服务外包职业学院，科学技术协会">
+
+<link href="{% static 'css/activ/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'css/activ/lightbox.css' %}" type="text/css" media="all"/>
+<link href="{% static 'css/activ/default.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/activ/nivo-slider.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<style>
+		body{
+			font-family: 'AmbleRegular';
+			background: url({% static 'img/activ/body-bg.png' %}) repeat;
+		}
+	</style>
+	<script src="{% static 'js/activ/jquery-1.9.0.min.js' %}"></script>
+		 <script src="{% static 'js/activ/jquery.nivo.slider.js' %}"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+			$('#slider').nivoSlider();
+		});
+		</script>
+<!--boder-image-->
+<script src="{% static 'js/activ/jquery.insetborder.js' %}"></script>
+<script type="text/javascript">
+			$(document).ready(function(){
+				$('a.sample-border1').borderEffect();
+				$('a.sample-border2').borderEffect({borderColor : '#ffffff'});
+				$('a.sample-border3').borderEffect({borderColor : '#cccccc', speed : 100, borderWidth: 10});
+			});
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="h-bg">
+  	<div class="shadow">
+	  <div class="header">
+		  <div class="header-top">
+
+			    <div class="return">
+				  <a href="{% url 'index' %}" class="index">首页</a><span>|</span>
+				  <a class="actvite">活动发布</a><span></span>
+				</div>
+
+				<div class="logo">
+					<a href="#"><img src="{% static 'img/activ/LOGO.png' %}" alt=""/></a>
+				</div>
+				<div class="cart">
+				  	   <p>Welcome to SISO 科协活动! <span></span></p><div id="dd" class="wrapper-dropdown-2">
+				  	   	<ul class="dropdown">
+								<li>you have no items in your activities ！</li>
+						</ul></div>
+				  </div>
+				<div class="clear"></div> 
+			</div>
+
+<div class="banner">
+ <div id="wrapper">
+ 		<div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+                <img src="{% static 'img/activ/banner1.jpg' %}"  alt="" />
+               	<img src="{% static 'img/activ/banner2.jpg' %}"  alt="" />
+                <img src="{% static 'img/activ/banner3.jpg' %}"  alt="" />
+            </div>
+        </div>
+ </div>
+</div>
+</div>
+<div class="main">
+		<div class="content-top">
+			<div class="box-heading0" style="background:  url({% static 'img/activ/heading.png' %})  repeat-x left bottom;">最新活动</div>
+
+			{% for act in new_acts %}
+			<div class="grid1">
+				<h3 class="head">{{  act.detil }}</h3>
+				<ul class="hover-img">
+					<li>
+						<a href="{% url 'activities:act_detial' act.id %}" class="sample-border2">
+							<img src="/media/{{ act.image }}" alt=""/>
+						</a>
+					</li>
+				</ul>
+			</div>
+			{% endfor %}
+
+			<div class="clear"></div>	
+		</div>
+
+		<div class="section group">
+			<div class="box-heading" style="background: url({% static 'img/activ/heading.png' %}) repeat-x left bottom;">全部活动</div>
+			{% for act in all_acts %}
+			 <div class="col_1_of_5 span_1_of_5">
+					<img src="/media/{{ act.image }}" alt=""/>
+				    <a href="{% url 'activities:act_detial' act.id %}" class="title" style="height: 38px;text-align: center">{{  act.detil }}</a>
+					<div class="price" style="height: 19px;">
+						<span class="reducedfrom">开始时间：{{  act.star_time }}</span><br>
+	        			<span class="actual">活动地点：{{  act.place }}</span>
+					</div>
+			   </div>
+			{% endfor %}
+				<div class="clear"></div>
+		</div>
+
+
+			<div id="social">
+				<div class="box-heading2" style="background:  url({% static 'img/activ/heading.png' %}) repeat-x left bottom;">赞助</div>
+				{% for sponsor in new_sponsors %}
+				<div class="col_1_of_3 span_1_of_3">
+					<a href="#"><div class="soc-img"><img src="/media/{{ sponsor.logo }}" alt=""/></div>
+						<div class="desc"><h1>{{ sponsor.name }}</h1>
+							<p>介绍：{{ sponsor.detil }}</p></div></a>
+							<div class="clear"></div>	
+				</div>
+				{% endfor %}
+				<div class="clear"></div>	
+			</div>
+</div>
+<div class="footer">
+		<div class="footer-top">
+				<div class="col_1_of_3 span_1_of_3">
+					<h3>Makeup Courses</h3>
+					<div class="sidebar-nav">
+		                <ul>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                 </ul>
+		              </div>
+			     </div>
+		         <div class="col_1_of_3 span_1_of_3">
+					<h3>Timeless Beauty</h3>
+					<div class="sidebar-nav">
+		                <ul>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                 </ul>
+		              </div>
+				  </div>
+				  <div class="col_1_of_3 span_1_of_c1">
+					<h3>Beauty Therapy</h3>
+							<div class="sidebar-nav">
+		                <ul>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">Always free from repetition</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
+		                 </ul>
+		              </div>
+				 </div>
+				<div class="clear"></div>	
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="footer-bottom">
+	<div class="wrap">
+		<div class="copy">
+			<p>Copyright &copy; 2019.Company name All rights reserved.<a href="http://www.cssmoban.com/" target="_blank" title="模板之家">SISO科协</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">SISO科协</a></p>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+    	
+    	
+            

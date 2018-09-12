@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 首页{% endblock %}
+
+{% block custom_bread %}
+            <ul>
+								<li ><a href="{% url 'index' %}">首 页</a></li>
+								<li><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li class="active"><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+{% endblock %}
+
+{% block content %}
+		<div class="wrap">
+		   <div class="content">
+				  <div class="project-top-patination">
+								<ul>
+									<li><a href="{% url 'index' %}">首页</a></li>
+									<li><p>关于我们</p></li>
+								</ul>
+							</div>
+					<div class="about-topgrid1">
+										<h3>我们是谁</h3>
+										<img src="{% static 'images/about_img.png' %} " title="name" alt="" style="height:200px;"/>
+										<h4>SISO  校科学技术协会.</h4>
+										{% for who in new_whos %}
+										<p>{{ who.name }}</p>
+										{% endfor %}
+
+									</div>
+					<div class="about-histore">
+									<h3>我们的历史</h3>
+									{% for history in new_histories %}
+									<div class="historey-lines">
+										<ul>
+											<li><span>{{ history.time }} &nbsp;-</span></li>
+											<li><p>{{ history.name }}</p></li>
+											<div class="clear"> </div>
+										</ul>
+									</div>
+						            {% endfor %}
+
+									<div class="clear"> </div>
+								</div>
+					<div class="about-services">
+									<h3>我们的科协</h3>
+									<h4>SISO  校科学技术协会.</h4>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;科技改变生活，科技创造未来。科学技术协会带你走进科技的殿堂，带你享受科学技术的旋律 .<br>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 校科协宣!</p>
+									<ul>
+										{% for server in new_servers %}
+										<li><a href="#"><img src="{% static 'images/marker.png' %}"> {{ server.name }}</a></li>
+										{% endfor %}
+
+										<div class="clear"> </div>
+									</ul>
+								</div>
+							<div class="clear"> </div>
+			           </div>
+			        </div>
+{% endblock %}

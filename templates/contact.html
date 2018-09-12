@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 新闻页{% endblock %}
+{% block custom_css %}
+<link href="{% static 'css/contact.css' %}" rel="stylesheet" type="text/css"  media="all" />
+{% endblock %}
+
+{% block custom_bread %}
+            <ul>
+								<li ><a href="{% url 'index' %}">首 页</a></li>
+								<li><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li class="active"><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+{% endblock %}
+
+{% block content %}
+	<!---start-content---->
+		<div class="wrap">
+		<div class="content">
+			<div class="contact">
+				<div class="project-top-patination">
+								<ul>
+									<li><a href="{% url 'index' %}">首页</a></li>
+									<li><p>联系我们</p></li>
+								</ul>
+							</div>
+				<div class="section group">
+				<div class="col span_1_of_3">
+					<div class="contact_info">
+			    	 	<h3>这儿联系我们</h3>
+			    	 		<!--<div class="map">-->
+					   			<!--<iframe width="100%" height="175" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:12px">View Larger Map</a></small>-->
+					   		<!--</div>-->
+      				</div>
+      			<div class="company_address">
+				     	<h3>联系方式 :</h3>
+						    	<p>China,</p>
+						   		<p>江苏省苏州市苏州工业园区，</p>
+						   		<p>苏州工业园区服务外包职业学院-校科协</p>
+				   		<p>电话:(00) 222 666 444</p>
+				   		<p>传真: (000) 000 00 00 0</p>
+				 	 	<p>电子邮箱: <span>info(at)mycompany.com</span></p>
+				   		<p>关注: <span>微博</span>, <span>微信公众号</span>, <span>博客</span></p>
+				   </div>
+				</div>
+				<div class="col span_2_of_3">
+				  <div class="contact-form">
+				  	<h3>联系我们</h3>
+					    <form method="post" action="{% url 'content:add_ask' %}" ONSUBMIT="return check()">
+					    	<div>
+						    	<span><label>姓名</label></span>
+						    	<span>
+									<input name="name" type="text" id="name" placeholder="请输入姓名(必填)" onblur="checkName()"/> <!--onblur:获取焦点时所触发的函数-->
+								</span>
+								<span id="nameinfo" class="tip"></span>
+						    </div>
+						    <div>
+						    	<span><label>邮箱</label></span>
+						    	<span><input name="email"  type="text" id="Email" placeholder="请输入Email(必填)" onblur="checkEmail()"/></span>
+								<span id="Emailinfo" class="tip"></span>
+						    </div>
+						    <div>
+						     	<span><label>手机号</label></span>
+									<span><input name="mobile" id="mobile" type="text"  placeholder="请输入手机号(必填)" pattern="^([\d]+)?$" onblur="checkmobile()"/>
+								</span>
+								<span id="mobileinfo" class="tip"></span>
+						    </div>
+                            <div>
+						     	<span><label>专业</label></span>
+						    	<span><input name="zy" id="zy" type="text" placeholder="请输入专业(必填)" onblur="checkzy()"/></span>
+								<span id="zyinfo" class="tip"></span>
+						    </div>
+						    <div>
+						    	<span><label>咨询</label></span>
+						    	<span><textarea name="msg" id="msg" placeholder="请输入咨询内容(必填)" onabort="checkmsg"> </textarea></span>
+								<span id="msginfo"></span>
+						    </div>
+						   <div id="envon">
+						   		<span><input type="submit" class="mybutton"  value="发送" id="send"></span>
+						  </div >
+							<!--<div style="text-align:center;border:1px solid red;color:white;background-color:red;width:110px"> {{ msg }}</div>-->
+							{% csrf_token %}
+					    </form>
+					  <span style="color:white;background-color:red">{{ msg }}</span>
+				    </div>
+  				</div>
+			  </div>
+			</div>
+		 </div>
+	   </div>
+ 	<!---End-content---->
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
+
+{% endblock %}

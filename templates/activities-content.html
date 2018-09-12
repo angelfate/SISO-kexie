@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ act.name }}</title>
+
+    <link rel="stylesheet" href="{% static 'css/activ/act-con.css' %}" type="text/css" media="all"/>
+    <style>
+        body{
+            font-family: 'AmbleRegular';
+            background: url({% static 'img/activ/body-bg.png' %}) repeat;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        <div class="return">
+            <a href="{% url 'index' %}" class="index">首页</a><span>|</span>
+            <a href="{% url 'activities:act_list' %}" class="index">活动发布</a><span>|</span>
+            <a class="actvite">活动详情</a>
+        </div>
+
+
+        <a class="name">{{ act.name}}</a>
+        <div class="title">
+            <span>发布时间：{{ act.create_time }}</span>
+            <span>活动开始：{{ act.star_time }}</span>
+            <span>浏览量：{{ act.click_nums }}</span>
+        </div>
+
+        <div class="content">
+               {% autoescape off %}
+                        {{ act.content }}
+                    {% endautoescape %}
+
+        </div>
+
+        <div class="bq">
+            <a>预计招募：<span class="person"> {{ act.students }}</span>人</a>
+            <a>招募对象：<span class="person">{{ act.ran }}</span></a>
+            <a>地点：<span class="person">{{ act.place }}</span></a>
+            <a>活动：<span class="act">{{ act.act }}</span></a>
+            <a>截止日期：<span class="act">{{ act.end_time }}</span></a>
+        </div>
+    </div>
+</body>
+</html>

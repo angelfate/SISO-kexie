@@ -1,0 +1,209 @@
+.lb-album{
+	margin: 0 auto;
+	padding: 4px;
+}
+.lb-album li:first-child {
+margin-left: 0;
+}
+.lb-album li{
+	float:left;
+	width:23.5%;
+	margin:1% 0 1% 2%;
+	background:#FFF;
+	box-shadow: 0px 0px 7px #808080;
+	-moz-box-shadow: 0px 0px 7px #808080;
+    -webkit-box-shadow: 0px 0px 7px #808080;
+	-o-box-shadow: 0px 0px 7px #808080;
+	position: relative;
+}
+.lb-album li > a,
+.lb-album li > a img{
+	display: block;
+}
+.lb-album li > a img{
+}
+.lb-album li > a{
+	position: relative;
+	padding:5px;
+}
+.lb-album li > a span{
+	position: absolute;
+	bottom:70px;
+	left:110px;
+	width:36px;
+	height:36px;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s linear;
+	-moz-transition: opacity 0.3s linear;
+	-o-transition: opacity 0.3s linear;
+	-ms-transition: opacity 0.3s linear;
+	transition: opacity 0.3s linear;
+}
+.lb-album li > a img:hover{
+	opacity:0.6;
+}
+.lb-album li > a:hover span{
+	opacity:1;
+	background:url(../images/zoom.png) no-repeat;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+.lb-overlay{
+	width: 0px;
+	height: 0px;
+	position: fixed;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	padding: 0px;
+	z-index: 99;
+	text-align: center;
+	background:rgba(24, 23, 23, 0.91);
+}
+.lb-overlay a.lb-close{
+	background: rgba(27,54,81,0.8);
+	z-index: 1001;
+	position: absolute;
+	right:29%;
+	top:12%;
+	width:27px;
+	height:27px;
+	background:url(../images/close.gif) no-repeat;
+	overflow: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+	-webkit-transition: opacity 0.3s linear 1.2s;
+	-moz-transition: opacity 0.3s linear 1.2s;
+	-o-transition: opacity 0.3s linear 1.2s;
+	-ms-transition: opacity 0.3s linear 1.2s;
+	transition: opacity 0.3s linear 1.2s;
+}
+.lb-overlay img{
+	/* height: 100%; For Opera max-height does not seem to work */
+	max-height: 100%;
+	position: relative;
+	-webkit-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+}
+.lb-overlay:target {
+	width: auto;
+	height: auto;
+	bottom: 0px;
+	right: 0px;
+	padding: 80px 100px 120px 100px;
+}
+.lb-overlay:target img {
+	-webkit-animation: scaleDown 1.2s ease-in-out;
+	-moz-animation: scaleDown 1.2s ease-in-out;
+	-o-animation: scaleDown 1.2s ease-in-out;
+	-ms-animation: scaleDown 1.2s ease-in-out;
+	animation: scaleDown 1.2s ease-in-out;
+}
+.lb-overlay:target a.lb-close,
+.lb-overlay:target > div{
+	opacity: 1;
+	filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+@-webkit-keyframes scaleDown {
+  0% { -webkit-transform: scale(10,10); opacity: 0; }
+  100% { -webkit-transform: scale(1,1); opacity: 1; }
+}
+@-moz-keyframes scaleDown {
+  0% { -moz-transform: scale(10,10); opacity: 0; }
+  100% { -moz-transform: scale(1,1); opacity: 1; }
+}
+@-o-keyframes scaleDown {
+  0% { -o-transform: scale(10,10); opacity: 0; }
+  100% { -o-transform: scale(1,1); opacity: 1; }
+}
+@-ms-keyframes scaleDown {
+  0% { -ms-transform: scale(10,10); opacity: 0; }
+  100% { -ms-transform: scale(1,1); opacity: 1; }
+}
+@keyframes scaleDown {
+  0% { transform: scale(10,10); opacity: 0; }
+  100% { transform: scale(1,1); opacity: 1; }
+}
+/* 
+	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens 
+	http://bricss.net/post/11230266445/css-hack-to-target-opera 
+*/
+x:-o-prefocus, .lb-overlay img {
+    height: 100%;
+}
+@media all and (max-width: 1024px) and (min-width: 800px) {
+	.lb-album li > a span {
+		bottom:35px;
+		left:75px;
+	}
+	.lb-album li > a {
+		padding:5px;
+	}
+	.lb-overlay a.lb-close {
+		right:16%;
+	}
+}
+@media all and (max-width:800px) and (min-width:640px){
+	.lb-album li {
+		width: 100%;
+		margin: 1% 3% 1% 0%;
+	}
+	.lb-overlay a.lb-close {
+		right:18%;
+	}
+}
+@media all and (max-width:640px) and (min-width:480px){
+	.lb-album li {
+		width: 47%;
+		margin: 1% 3% 1% 0%;
+	}
+	.lb-overlay a.lb-close {
+		right:18%;
+	}
+	.lb-album li > a span {
+		bottom:45px;
+		left:85px;
+	}
+	.lb-album li > a {
+		padding:5px;
+	}
+	.lb-overlay:target {
+		padding:70px 15px 70px 15px;
+	}
+}
+@media all and (max-width:480px) and (min-width:320px){
+	.lb-album li {
+		width: 47%;
+		margin: 1% 3% 1% 0%;
+	}
+	.lb-overlay a.lb-close {
+		right:10%;
+		top:5%;
+	}
+	.lb-album li > a span {
+		bottom:45px;
+		left:85px;
+	}
+	.lb-album li > a {
+		padding:5px;
+	}
+	.lb-overlay:target {
+		padding:70px 15px 70px 15px;
+	}
+}
+@media all and (max-width:320px) {
+	.lb-album li {
+		width:100%;
+		margin: 2% 0% 2% 0%;
+	}
+	.lb-overlay a.lb-close {
+		right:8%;
+		top:6%;
+	}
+	.lb-overlay:target {
+		padding:70px 15px 70px 15px;
+	}
+}

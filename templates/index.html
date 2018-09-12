@@ -1,0 +1,82 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 首页{% endblock %}
+{% block content %}
+    <!--start-image-slider---->
+            <div class="slider">
+                <div class="fluid_container">
+                    <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+							{% for banner in new_banners %}
+                              <div data-thumb="/media/{{ banner.image }}" data-src="/media/{{ banner.image }}">  </div>
+							{% endfor %}
+                        </div>
+                   </div>
+                   <div class="clear"></div>
+                </div>
+    <!--End-image-slider---->
+
+    <!---start-content---->
+		   <div class="content">
+		         <div class="wrap">
+			          <div class="content_top">
+				          <div class="grid1">
+				     		<h2>最新新闻 NEWS</h2>
+				     	        <div class="grides">
+                             {% for new in hot_news %}
+                                <div class="sub_grid1">
+                                    <div class="grid_img">
+                                        <img src="/media/{{ new.image }}" style="width:200px;height:90px">
+                                    </div>
+                                    <div class="grid_data">
+                                        <h3>{{ new.title }}</h3>
+                                        <p>{{ new.detil }}<a href="{% url 'news:new_content' new.id %}">MORE INFO</a></p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                          {% endfor %}
+				       <div class="clear"></div>
+				     </div>
+				 </div>
+				         <div class="grid2">
+				         	  <h2>最新活动 Active</h2>
+				         	  <img src="{% static 'images/grid2-img.jpg' %}">
+				         	  <p>活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍活动介绍</p>
+					   </div>
+	       			<div class="clear"></div>
+	          </div>
+	       </div><div class="tlinks">SISO<a href="http://www.cssmoban.com/"  title="网校科协">校科协</a></div>
+	          <div class="slogan">
+		   		<div class="wrap">
+				  <div class="content-slogan">
+					<p>苏州工业园区服务外包职业学院 <a href="#">SISO校科协</a> 科技改变生活，科技创造未来 <a href="#">科学技术协会</a> 带你走进科技的殿堂，带你享受科学技术的旋律 <a href="#">SISO科协宣！.</a> </p>
+				  </div>
+				     <div class="slogan-sub">
+						<p>校科协是校级的一个大社团，拥有两个院级附属--商院科协和信工科协，七个主要社团部门—实践部、办公部、网络部、组织部、志愿部、宣传部、微信办。校科协是一个有纪律、有活力的社团，它的社团活动具有多样性，你可以从中受益匪浅，得到很好的锻炼。科协需要很多有才华、有活力的新鲜血液，如果你认为你有能力，欢迎加入我们！！！</p>
+					 </div>
+		         </div>
+		      </div>
+		      <div class="wrap">
+			   <div  class="dc-grids">
+				   {% for cadre in new_cadres %}
+					<div class="dc-head">
+						<div class="dc-head-img">
+							<a href="#"><img src="/media/{{ cadre.image }}" title="dc-name" style="height:100px;width:100px;"/></a>
+						</div>
+						<div class="dc-head-info">
+							<h3>{{ cadre.name }}</h3>
+							<span>职位：{{ cadre.job }}</span>
+						</div>
+						<div class="clear"> </div>
+						<div class="dc-profile">
+							<p>个人座右铭/宣言</p>
+							<a href="#">{{ cadre.declaration }}</a>
+						</div>
+					</div>
+				   {% endfor %}
+
+				<div class="clear"> </div>
+		 	 </div>
+		  </div>
+	 </div>
+ 	<!---End-content---->
+{% endblock %}

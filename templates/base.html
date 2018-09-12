@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+ <title> {% block title %}SISO科学技术协会{% endblock %} </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	 {% block custom_css %}{% endblock %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"  media="all" />
+  <link href="{% static 'css/slider.css' %}" rel="stylesheet" type="text/css"  media="all" />
+  <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/camera.min.js' %}"></script>
+		<script type="text/javascript">
+			   jQuery(function(){
+
+				jQuery('#camera_wrap_1').camera({
+					thumbnails: true
+				});
+			});
+		  </script>
+</head>
+	 <body>
+		 <div class="header">
+				<div class="header_top">
+				   <div class="wrap">
+					<div class="logo">
+						<a href="#"><img src="{% static 'images/LOGO.png' %}" style="heignt:20%"/></a>
+					</div>
+						<div class="top-nav">
+							{% block custom_bread %}
+							<ul>
+								<li class="active"><a href="#">首 页</a></li>
+								<li><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+							{% endblock %}
+						</div>
+				     <div class="clear"> </div>
+				   </div>
+			   </div>
+				   <div class="header_bottom phone-slogan">
+					  <div class="wrap">
+						<div class="header-phone">
+							<h2><img src="{% static 'images/phone.png' %}" alt="" />1-234-567-8900</h2>
+							<h4 style="font-weight: bold">SISO .  科 学 技 术 协 会</h4>
+							<span class="triangle-arrow">&nbsp;</span>
+						</div>
+						  <div class="header-tagline">
+							  <h3><img src="{% static 'images/clock.png' %}" alt="" />工作时间 : <span>09.30 AM - 10.00PM</span></h3>
+						</div>
+					</div>
+			   </div>
+		  </div>
+	<!---End-header--->
+
+        {% block content %}
+			 <!---start-content---->
+			 <!---End-content---->
+        {% endblock %}
+
+	  <!---Footer---->
+  <div class="footer">
+	<div class="wrap">
+	   <div class="section group">
+				<div class="col_1_of_4 span_1_of_4">
+					<h3>加入我们</h3>
+					 <div class="social-icons">
+								<ul>
+									<li><a href="#"><img src="{% static 'images/facebook.png' %}" title="facebook"></a></li>
+									<li><a href="#"><img src="{% static 'images/twitter.png' %}" title="Twiiter"></a></li>
+									<li><a href="#"><img src="{% static 'images/rss.png' %}" title="Rss"></a></li>
+									<li><a href="#"><img src="{% static 'images/gpluse.png' %}" title="Google+"></a></li>
+								</ul>
+				    </div>
+				    <div class="location">
+				    	<h3>方式</h3>
+				    	<ul>
+				    		 <li>微信公众号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ官方群</li>
+							 <li><img src="{% static 'images/weixin.png' %}" style="width: 80px;height: 80px">&nbsp;&nbsp;
+								 <img src="{% static 'images/weixin.png' %}" style="width: 80px;height: 80px"></li>
+						 </ul>
+				    </div>
+				</div>
+				  <div class="col_1_of_4 span_1_of_4">
+					<h3>信息</h3>
+					<p>校科协是校级的一个大社团，拥有两个院级附属--商院科协和信工科协。校科协是一个有纪律、有活力的社团，它的社团活动具有多样性，你可以从中受益匪浅，得到很好的锻炼。科协需要很多有才华、有活力的新鲜血液，如果你认为你有能力，欢迎加入我们！！！<br><span><a href="#">Read More[....]</a></span></p>
+				  </div>
+				     <div class="col_1_of_4 span_1_of_4">
+						<h3>宣言</h3>
+						<div class="Testimonials_desc">
+						<p><span class="up"><img src="{% static 'images/quotes.png' %}" alt=""></span>科技改变生活，科技创造未来。科学技术协会带你走进科技的殿堂，带你享受科学技术的旋律 .<span class="down"><img src="{% static 'images/quotes-down.png' %}" alt=""></span></p>
+					    <h5>- 科学技术协会 宣！</h5>
+					   </div>
+					</div>
+						<div class="col_1_of_4 span_1_of_4">
+							   <h3>联系我们</h3>
+							       <ul class="address">
+								  	 <li>www.yourcompany(at)gmail.com</li>
+								  	 <li><span>手机 :</span> ***********</li>
+								  	 <li><span>微信 :</span> ***********</li>
+								  	 <li><span>QQ :</span> 805337534</li>
+									 <li><span>管理员QQ :</span> 1040691703</li>
+								  </ul>
+						  </div>
+					  </div>
+				</div>
+		  <div class="copy-right">
+			<div class="wrap" >
+			 <p class="company_name"  style="padding-left: 25%"> Copyright &copy; 2019.Company name All rights reserved.More SISO校科协 <a href="#" target="_blank" title="SISO校科协">SISO校科协</a></p>
+			 <div class="clear"></div>
+		</div>
+       </div>
+   </div>
+{% block script %}
+{% endblock %}
+</body>
+</html>
+

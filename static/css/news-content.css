@@ -1,0 +1,25 @@
+/*  news start*/
+.news{
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 90%;
+    border: whitesmoke solid 1px;
+    background-color: whitesmoke;
+}
+.news .title0{ /* 控制文章标题*/
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    padding-top: 1.5em;
+    font-family: 华文楷体;
+}
+.news .totor{ /* 控制文章发布人和时间*/
+     display: block;
+     text-align: center;
+     color: #8d949a;
+     font-size: 0.8em;
+     padding-top: 1em;
+     padding-bottom: 2em;
+     margin-bottom: 1.5em;
+ }
+/*  news end*/

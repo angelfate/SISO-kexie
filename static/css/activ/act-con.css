@@ -1,0 +1,88 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin:0;
+    padding:0;
+    border:0;
+    list-style:none;
+    text-decoration: none;
+}
+
+#main{
+    margin-top: 20px;
+    margin-bottom:5em;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px solid lightgoldenrodyellow;
+    background-color: whitesmoke;
+}
+#main .return{
+    padding-top: 1em;
+    padding-left: 5%;
+    font-family: 华文楷体;
+}
+
+#main .return span{
+    color: #8d949a;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+#main .return .index{
+    color: #5a5a5a;
+}
+#main .return .index:hover{
+    color: orange;
+}
+#main .return .actvite{
+    color: orange;
+}
+#main .name{
+    text-align: center;
+    display: block;
+    font-family: 华文行楷;
+    font-size: 1.5em;
+    color: orange;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+#main .title{
+    width: 80%;
+    padding-left: 10%;
+    text-align: center;
+    color: #8d949a;
+    font-size: 0.8em;
+}
+#main .title span{
+    padding-right: 2%;
+}
+
+
+#main .time{
+    width: 60%;
+    margin-left: 20%;
+    text-align: center;
+    font-size: 0.8em;
+    color: #8d949a;
+
+}
+#main .content{
+    margin-top: 2em;
+}
+#main .bq{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    width: 80%;
+    margin-left: 10%;
+    font-size: 1em;
+}
+#main .bq a{
+    font-family: 华文楷体;
+    color: purple;
+    padding-right:5%;
+}
+#main .bq .person{
+    color: #8d949a;
+}
+#main .bq .act{
+    color: red;
+}
+
+

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 新闻页{% endblock %}
+{% block custom_css %}
+<link href="{% static 'css/news.css' %}" rel="stylesheet" type="text/css"  media="all" />
+{% endblock %}
+
+{% block custom_bread %}
+            <ul>
+								<li ><a href="{% url 'index' %}">首 页</a></li>
+								<li><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li class="active"><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+{% endblock %}
+
+{% block content %}
+
+    <!---start-content---->
+		   <div class="content">
+    <div class="wrap">
+        <div class="project-top-patination">
+            <ul>
+                <li><a href="{% url 'index' %}">首页</a></li>
+                <li><p>新闻发布</p></li>
+            </ul>
+
+            {% for new in top_news %}
+            <ul class="news">
+                <li class="word0">
+                    <span class="top">★【置顶】
+                        <a href="{% url 'news:new_content' new.id %}">
+                            <span class="top0">{{ new.title }}</span>
+                        </a>
+                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;{{ new.org }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ new.create_time }}</span>
+
+                    </span>
+                </li>
+            </ul>
+            {% endfor %}
+
+            {% for new in all_news %}
+            <ul class="news">
+                <li class="word">
+                    <img src="{% static 'img/news/LinXin.jpg' %}"/>
+                    <a href="{% url 'news:new_content' new.id %}">{{ new.title }}&nbsp;&nbsp;<span style="color: #b2b2b2;">|&nbsp;&nbsp;{{ new.org }}</span></a>
+                </li>
+                <li class="time"><span>{{ new.create_time }}</span></li>
+            </ul>
+            {% endfor %}
+    </div>
+
+        <div class="pageturn">
+            <ul class="pagelist">
+                 {% if all_new.has_previous %}
+                    <li class="long"><a href="?{{ all_new.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+
+                {% for page in all_new.pages %}
+                    {% if page %}
+                        {% ifequal page all_new.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if all_new.has_next %}
+                    <li class="long"><a href="?{{ all_new.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+</div>
+</div>
+ 	<!---End-content---->
+{% endblock %}
+
+

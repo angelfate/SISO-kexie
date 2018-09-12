@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}SISO科学技术协会 - 首页{% endblock %}
+
+{% block custom_bread %}
+            <ul>
+								<li ><a href="{% url 'index' %}">首 页</a></li>
+								<li class="active"><a href="{% url 'cadres:cadres_list' %}">历届干部</a></li>
+								<li><a href="{% url 'activities:act_list' %}">活动发布</a></li>
+								<li><a href="{% url 'news:new_list' %}">新闻发布</a></li>
+								<li><a href="{% url 'about:about' %}">关于我们</a></li>
+								<li><a href="{% url 'content:content' %}">联系我们</a></li>
+							</ul>
+{% endblock %}
+
+
+{% block content %}
+ 	<div class="wrap">
+		<div class="content">
+			<div class="our-staff">
+				<div class="project-top-patination">
+								<ul>
+									<li><a href="{% url 'index' %}">首页</a></li>
+									<li><p>历届干部</p></li>
+								</ul>
+							</div><br />
+				{% for cadre in all_cadres.object_list %}
+				<div class="dc-head">
+					<div class="dc-head-img">
+						<a href="#"><img src="/media/{{ cadre.image }}" title="dc-name" style="height:100px;width:100px;"/></a>
+					</div>
+					<div class="dc-head-info">
+						<h3>{{ cadre.name }}</h3>
+						<span>职位：{{ cadre.job }} &nbsp; &nbsp; &nbsp;届数：{{ cadre.grade }}</span><br><br>
+						<span>&nbsp;专业：{{ cadre.professions }}</span>
+					</div>
+					<div class="clear"> </div>
+					<div class="dc-profile">
+						<p>座右铭：{{ cadre.declaration }}</p>
+						<a href="#" style="margin-bottom: 3em;">More Info</a>
+					</div>
+				</div>
+				{% endfor %}
+
+				<div class="clear"> </div>
+
+			<div class="projects-bottom-paination">
+						<ul>
+				{% if all_cadres.has_previous %}
+                    <li class="long"><a href="?{{ all_cadres.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+
+                {% for page in all_cadres.pages %}
+                    {% if page %}
+                        {% ifequal page all_cadres.number %}
+                            <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                        {% else %}
+                            <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                        {% endifequal %}
+                    {% else %}
+                        <li class="none"><a href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if all_cadres.has_next %}
+                    <li class="long"><a href="?{{ all_cadres.next_page_number.querystring }}">下一页</a></li>
+                {% endif %}
+
+
+						</ul>
+					</div>
+			   </div>
+			  </div>
+		    </div>
+ 	<!---End-content---->
+{% endblock %}
